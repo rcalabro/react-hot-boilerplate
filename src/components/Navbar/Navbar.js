@@ -14,7 +14,7 @@ class Navbar extends Component {
       <BSNavbar fluid fixedTop>
         <BSNavbar.Header>
           <BSNavbar.Brand>
-            <Image noPadding src='/static/logo.svg'/>
+            <Image src='/static/logo.svg'/>
           </BSNavbar.Brand>
           <BSNavbar.Toggle />
         </BSNavbar.Header>
