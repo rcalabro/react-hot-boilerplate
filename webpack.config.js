@@ -4,6 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
+    'babel-polyfill',
     'webpack-hot-middleware/client',
     './src/app'
   ],
@@ -17,7 +18,7 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['react-hot', 'babel'] },
+      { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel'] },
       { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
     ]
   }
