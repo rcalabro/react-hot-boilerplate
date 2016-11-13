@@ -12,15 +12,12 @@
     "url": "https://github.com/rcalabro/seek-ads-checkout.git"
   },
   "keywords": [
+    "seek",
+    "ads checkout",
+    "exercise",
     "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
+    "redux",
+    "saga"
   ],
   "author": "Renato Calabro <calabro@live.com> (http://github.com/rcalabro)",
   "license": "MIT",
