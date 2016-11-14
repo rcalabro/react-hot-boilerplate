@@ -15,7 +15,7 @@ function* signinSaga(action) {
     yield put(stopSubmit('signinForm'))
     yield put(auth.signin.success(data))
     yield put(setSubmitSucceeded('signinForm'))
-    yield put(push('/'))
+    yield put(push('/checkout'))
   } else {
     yield put(stopSubmit('signinForm', { _error: error.message }))
     yield put(auth.signin.failure(error))
@@ -29,7 +29,7 @@ function* signoutSaga() {
   yield put(push('/'))
 }
 
-export function* watcSignin() {
+export function* watchSignin() {
   yield* takeLatest(actions.SIGNIN_SUBMIT, signinSaga)
 }
 
@@ -38,6 +38,6 @@ export function* watchSignout() {
 }
 
 export default {
-  watcSignin,
+  watchSignin,
   watchSignout
 }

@@ -5,9 +5,13 @@ exports[`test Navbar renders correctly 1`] = `
     className="container-fluid">
     <div
       className="navbar-header">
-      <img
-        className="navbar-brand"
-        src="/static/logo.svg" />
+      <a
+        onClick={[Function]}
+        style={Object {}}>
+        <img
+          className="navbar-brand"
+          src="/static/logo.svg" />
+      </a>
       <button
         className="navbar-toggle collapsed"
         onClick={[Function]}
@@ -30,18 +34,6 @@ exports[`test Navbar renders correctly 1`] = `
       <ul
         className="nav navbar-nav navbar-right"
         role={null}>
-        <li
-          className=""
-          role="presentation"
-          style={undefined}>
-          <a
-            action="push"
-            href="#"
-            onClick={[Function]}
-            role="button">
-            Home
-          </a>
-        </li>
         <li
           className=""
           role="presentation"

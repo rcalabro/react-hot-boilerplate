@@ -1,0 +1,10 @@
+/*#region Pricing Tables*/
+.pricing-container {
+    padding: 20px;
+    margin: auto;
+
+    [class*="col-"] {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}

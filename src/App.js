@@ -12,6 +12,7 @@ import saga from './modules/saga'
 import App from './containers/App/App'
 import Landing from './containers/Landing/Landing'
 import Signin from './containers/Signin/Signin'
+import Checkout from './containers/Checkout/Checkout'
 
 
 const sagaMiddleware = createSagaMiddleware()
@@ -36,6 +37,7 @@ render(
         <Route path="/" component={App}>
           <IndexRoute component={Landing} />
           <Route path="signin" component={Signin} />
+          <Route path="checkout" component={Checkout} />
         </Route>
       </Router>
     </div>

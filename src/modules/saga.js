@@ -2,14 +2,18 @@ import { fork, join } from 'redux-saga/effects'
 import { formSubmitSaga } from 'redux-form-submit-saga'
 
 import {
-  watcSignin,
+  watchSignin,
   watchSignout
 }from './auth/saga'
+import {
+  watchAdd
+}from './checkout/saga'
 
 export default function* rootSaga() {
   yield [
     fork(formSubmitSaga),
-    fork(watcSignin),
-    fork(watchSignout)
+    fork(watchSignin),
+    fork(watchSignout),
+    fork(watchAdd)
   ]
 }

@@ -1,0 +1,1 @@
+export deals from './deals'

@@ -40,18 +40,6 @@ exports[`test App renders correctly 1`] = `
               href="#"
               onClick={[Function]}
               role="button">
-              Home
-            </a>
-          </li>
-          <li
-            className=""
-            role="presentation"
-            style={undefined}>
-            <a
-              action="push"
-              href="#"
-              onClick={[Function]}
-              role="button">
               Sign In
             </a>
           </li>
