@@ -1,37 +1,50 @@
-import * as ActionTypes from './actions';
+import * as ActionTypes from './actions'
 
 const initialState = {
   authenticated: false
-};
+}
 
 export const auth = (state = initialState, action = {}) => {
   switch (action.type) {
-    case ActionTypes.AUTH.REQUEST:
+    case ActionTypes.SIGNIN.REQUEST:
       return {
         ...state,
         authenticating: true
-      };
-    case ActionTypes.AUTH.SUCCESS:
+      }
+    case ActionTypes.SIGNIN.SUCCESS:
       return {
         ...state,
         authenticating: false,
         authenticated: true,
-        claims: action.payload,
+        user: action.payload,
         error: null
-      };
-    case ActionTypes.AUTH.FAILURE:
+      }
+    case ActionTypes.SIGNIN.FAILURE:
       return {
         ...state,
         authenticating: false,
         authenticated: false,
-        claims: null,
+        user: null,
         error: action.error
-      };
+      }
+      case ActionTypes.SIGNOUT.REQUEST:
+        return {
+          ...state,
+          signingout: true
+        }
+      case ActionTypes.SIGNOUT.SUCCESS:
+        return {
+          ...state,
+          signingout: false,
+          authenticated: false,
+          user: null,
+          error: null
+        }
     default:
-      return state;
+      return state
   }
-};
+}
 
 export default {
   auth
-};
+}

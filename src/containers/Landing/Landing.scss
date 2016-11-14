@@ -1,0 +1,33 @@
+.landing {
+
+  .welcome {
+
+    background: white;
+    text-align: center;
+
+    .logo {
+      $size: 400px;
+      padding-top: 100px;
+      margin: auto;
+      height: $size;
+      width: $size;
+      vertical-align: middle;
+
+      h1 {
+        font-size: 4em;
+      }
+
+      h2 {
+        color: #666;
+        font-size: 2em;
+        margin: 20px;
+      }
+
+      img {
+        width: 75%;
+        margin: auto;
+      }
+    }
+
+  }
+}

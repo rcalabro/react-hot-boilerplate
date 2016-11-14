@@ -5,6 +5,7 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'babel-polyfill',
+    'whatwg-fetch',
     'webpack-hot-middleware/client',
     './src/app'
   ],

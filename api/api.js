@@ -2,7 +2,7 @@ import express from 'express';
 import http from 'http';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-import {mapUrl} from './utils/url.js';
+import { actionRouter } from './middlewares';
 
 import * as actions from './actions/index';
 
@@ -18,34 +18,9 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.use((req, res) => {
-  const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
-
-  const {action, params} = mapUrl(actions, splittedUrlPath);
-
-  if (action) {
-    action(req, params)
-      .then((result) => {
-        if (result instanceof Function) {
-          result(res);
-        } else {
-          res.json(result);
-        }
-      }, (reason) => {
-        if (reason && reason.redirect) {
-          res.redirect(reason.redirect);
-        } else {
-          console.error('API ERROR:', pretty.render(reason));
-          res.status(reason.status || 500).json(reason);
-        }
-      });
-  } else {
-    res.status(404).end('NOT FOUND');
-  }
-});
-
+app.use(actionRouter());
 
 app.listen(port, (err) => {
   if (err) {

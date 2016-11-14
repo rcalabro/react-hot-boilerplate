@@ -1,7 +1,9 @@
 var favicon = require('serve-favicon');
+var url = require('url');
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
+var proxy = require('express-http-proxy');
 var config = require('./webpack.config');
 
 var app = express();
@@ -15,6 +17,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+
+app.use('/api', proxy('http://localhost:3030', {
+  forwardPath: (req) => url.parse(req.url).path
+}));
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
