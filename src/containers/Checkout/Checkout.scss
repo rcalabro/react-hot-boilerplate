@@ -1,10 +1,75 @@
 /*#region Pricing Tables*/
 .pricing-container {
-    padding: 20px;
-    margin: auto;
+  padding: 20px;
+  margin: auto;
 
-    [class*="col-"] {
-        padding-left: 5px;
-        padding-right: 5px;
+  [class*="col-"] {
+    min-width: 172px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .total-container {
+    margin-left: 5px;
+    height: 310px;
+    border: 1px solid;
+
+
+    .header {
+      position: relative;
+      font-size: 20px;
+      font-weight: normal;
+      text-transform: uppercase;
+      padding: 5px;
+      margin: 0;
+      border-bottom: 3px solid;
     }
+
+    .total-itens{
+      padding: 10px;
+      font-size: 20px;
+
+      &.subtotal {
+        position: absolute;
+        bottom: 60px;
+        left: 5px;
+        right: 5px;
+      }
+      &.discount {
+        color: red;
+        position: absolute;
+        bottom: 30px;
+        left: 5px;
+        right: 5px;
+      }
+      &.total {
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        right: 5px;
+
+        .total-line {
+          border-top: 1px solid;
+        }
+      }
+
+      .total-line{
+        display: block;
+        .ad-name{
+          float: left;
+        }
+        .ad-price{
+          float: right;
+        }
+      }
+
+    }
+  }
+
+  .buttons {
+    margin-top: 10px;
+    position: absolute;
+    right: 10px;
+  }
 }

@@ -1,41 +1,37 @@
+import forEach from 'lodash/forEach'
 import * as ActionTypes from './actions'
 
 const initialState = {
-  ads: []
+  ads: {}
 }
 
 export const checkout = (state = initialState, action = {}) => {
   switch (action.type) {
-    case ActionTypes.ADD.REQUEST:
-      return {
-        ...state,
-        adding: true
-      }
-    case ActionTypes.ADD.SUCCESS:
-      state.ads.push(action.payload)
+    case 'LOAD_STORED_STATE':
+      return {...action.storedState.checkout}
+    case ActionTypes.ADD_AD:
+
+      let newAds = { ...state.ads }
+      forEach(action.ads, (val) => {
+        newAds[val] = (newAds[val] || 0) + 1
+      })
 
       return {
         ...state,
-        adding: false,
-        error: null
+        ads: newAds
       }
-    case ActionTypes.ADD.FAILURE:
+    case ActionTypes.GET_TOTAL:
+      console.log(action.payload)
       return {
         ...state,
-        adding: false,
-        error: action.error
+        total: { ...action.payload }
       }
-      case ActionTypes.TOTAL.REQUEST:
-        return {
-          ...state,
-          gettingTotal: true
-        }
-      case ActionTypes.TOTAL.SUCCESS:
-        return {
-          ...state,
-          gettingTotal: false,
-          total: action.payload
-        }
+    case ActionTypes.CLEAR_ADS:
+      return {
+        ...state,
+        ads: {},
+        total: {}
+      }
     default:
       return state
   }

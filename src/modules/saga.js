@@ -6,7 +6,7 @@ import {
   watchSignout
 }from './auth/saga'
 import {
-  watchAdd
+  watchAddAd
 }from './checkout/saga'
 
 export default function* rootSaga() {
@@ -14,6 +14,6 @@ export default function* rootSaga() {
     fork(formSubmitSaga),
     fork(watchSignin),
     fork(watchSignout),
-    fork(watchAdd)
+    fork(watchAddAd)
   ]
 }

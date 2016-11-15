@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Seek coding exercise",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run start-api\" \"npm run start-server\"",
-    "start-api": "node api.js",
-    "start-server": "node server.js",
+    "start": "node server.js",
     "test": "jest",
     "lint": "eslint src"
   },
@@ -54,11 +52,11 @@
   "dependencies": {
     "babel-eslint": "^7.1.0",
     "body-parser": "^1.15.2",
-    "concurrently": "^3.1.0",
     "eslint": "^3.9.1",
     "eslint-plugin-react": "^6.6.0",
     "express-http-proxy": "^0.10.1",
     "express-session": "^1.14.2",
+    "numbro": "^1.9.3",
     "react": "^15.3.2",
     "react-bootstrap": "*",
     "react-dom": "^15.3.2",
@@ -69,8 +67,8 @@
     "redux": "*",
     "redux-form": "^6.2.0",
     "redux-form-submit-saga": "^1.1.0",
-    "redux-localstorage": "^0.4.1",
     "redux-saga": "*",
+    "redux-session": "^1.0.2",
     "serve-favicon": "*",
     "url": "^0.11.0",
     "whatwg-fetch": "^1.0.0"

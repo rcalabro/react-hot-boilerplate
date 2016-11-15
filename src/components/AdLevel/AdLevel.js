@@ -58,9 +58,6 @@ class AdLevel extends Component {
         <div className='add'>
           <div>
             <Button bsStyle='link' onClick={onAdd}><Glyphicon glyph="plus" /> Add</Button>
-            {(bundle || bundleDiscount) &&
-              <Button bsStyle='success' onClick={onAddDeal}><Glyphicon glyph="plus" /> Add Deal</Button>
-            }
           </div>
         </div>
       </div>
@@ -74,8 +71,7 @@ AdLevel.propTypes = {
   price: PropTypes.number.isRequired,
   deals: PropTypes.array,
   children: PropTypes.array,
-  onAdd: PropTypes.func,
-  onAddDeal: PropTypes.func
+  onAdd: PropTypes.func
 }
 
 

@@ -5,8 +5,10 @@ import { push } from 'react-router-redux'
 
 import { signin, signout } from '../../services/api/auth'
 import * as actions from './actions'
+import * as checkoutActions from '../checkout/actions'
 
 const auth = actions.sagaActions
+const checkout = checkoutActions.viewActions
 
 function* signinSaga(action) {
   const { data, error} = yield call(signin, action.payload)
@@ -24,8 +26,9 @@ function* signinSaga(action) {
 }
 
 function* signoutSaga() {
-  yield call(signout)
   yield put(auth.signout.success())
+  yield put(checkout.clearAds())
+  yield put({ type: 'CLEARED_STORED_STATE'})
   yield put(push('/'))
 }
 

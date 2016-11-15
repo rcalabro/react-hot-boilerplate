@@ -6,6 +6,8 @@ const initialState = {
 
 export const auth = (state = initialState, action = {}) => {
   switch (action.type) {
+    case 'LOAD_STORED_STATE':
+      return {...action.storedState.auth}
     case ActionTypes.SIGNIN.REQUEST:
       return {
         ...state,

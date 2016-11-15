@@ -1,4 +1,10 @@
-import { post } from '../helper'
+import { adLevels } from '../mocks/adLevels'
+import { deals } from '../mocks/deals'
 
-export const signin = (payload) => post('/auth/signin', payload)
-export const signout = () => post('/auth/signout')
+export const signin = (payload) => ({
+  data: {
+    name: payload.username,
+    adLevels: adLevels(),
+    deals: deals(payload.username)
+  }
+})
