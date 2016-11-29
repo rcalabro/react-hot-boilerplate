@@ -1,4 +1,3 @@
-import round from 'lodash/round'
 import { runTotal } from './runTotal'
 import { deals } from '../mocks/deals'
 
@@ -116,7 +115,7 @@ describe('runTotal', () => {
 
     const data = runTotal(selectedAds, clientDeals, availableAds).data
 
-    expect(round(data.total, 2)).toBe(3729.89)
+    expect(data.total).toBeCloseTo(3729.89, 2)
   })
 
   it('adding [classic x 5, standout, premium x 6] for Ford should return discount = -312.99', ()=> {
