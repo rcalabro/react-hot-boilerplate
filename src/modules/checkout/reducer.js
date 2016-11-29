@@ -21,7 +21,7 @@ export const checkout = (state = initialState, action = {}) => {
         ads: newAds
       }
     case ActionTypes.GET_TOTAL:
-      console.log(action.payload)
+    
       return {
         ...state,
         total: { ...action.payload }
