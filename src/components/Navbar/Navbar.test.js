@@ -9,5 +9,6 @@ test('Navbar renders correctly', () => {
   const tree = renderer.create(
     <Navbar signout={signout} />
   ).toJSON();
+
   expect(tree).toMatchSnapshot();
 })

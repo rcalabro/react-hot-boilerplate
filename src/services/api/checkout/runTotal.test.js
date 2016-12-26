@@ -4,7 +4,8 @@ import { deals } from '../mocks/deals'
 const availableAds = [
   { id: 'classic', name: 'Classic Ad', price: 269.99 },
   { id: 'standout', name: 'Standout Ad', price: 322.99 },
-  { id: 'premium', name: 'Premium Ad', price: 394.99 }
+  { id: 'premium', name: 'Premium Ad', price: 394.99 },
+  { id: 'membership', name: 'Membership', price: 99 }
 ]
 
 describe('runTotal', () => {
@@ -129,5 +130,46 @@ describe('runTotal', () => {
     const data = runTotal(selectedAds, clientDeals, availableAds).data
 
     expect(data.discount).toBe(-312.99)
+  })
+
+  it('when adding ten products Membership should be free', () => {
+      const clientDeals = deals('default')
+      const selectedAds = {
+        classic: 10,
+        membership: 1
+      }
+
+
+      const data = runTotal(selectedAds, clientDeals, availableAds).data.ads
+
+      expect(data.membership.total).toBe(0)
+  })
+
+  it('when adding less than ten products Membership should cost 99', () => {
+      const clientDeals = deals('default')
+      const selectedAds = {
+        classic: 2,
+        membership: 1
+      }
+
+
+      const data = runTotal(selectedAds, clientDeals, availableAds).data.ads
+
+      expect(data.membership.total).toBe(99)
+  })
+
+  it('when adding 2 classics and 8 standouts Membership should be free', () => {
+      const clientDeals = deals('default')
+      const selectedAds = {
+        classic: 2,
+        standout: 8,
+        membership: 1
+      }
+
+
+      const data = runTotal(selectedAds, clientDeals, availableAds).data.ads
+
+      expect(data.membership.total).toBe(0)
+
   })
 })

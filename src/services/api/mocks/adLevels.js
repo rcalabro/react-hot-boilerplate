@@ -4,5 +4,7 @@ export const adLevels = () => ([
   { id: 'standout', name: 'Standout Ad', price: 322.99
     , features: ['Basic Advertisement', 'Use your company logo', 'Longer presentation text']},
   { id: 'premium', name: 'Premium Ad', price: 394.99
-    , features: ['Basic Advertisement', 'Use your company logo', 'Longer presentation text', 'Stay on top!']}
+    , features: ['Basic Advertisement', 'Use your company logo', 'Longer presentation text', 'Stay on top!']},
+  { id: 'membership', name: 'Membership', price: 99
+    , features: ['']}
 ])

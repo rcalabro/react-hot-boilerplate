@@ -47,6 +47,13 @@ export const deals = (client) => {
         }
       ]
     default:
-      return [];
+      return [
+        {
+          type: 'free-for-products',
+          adLevel: 'membership',
+          over: 10,
+          price: 0
+        }
+    ];
   }
 }

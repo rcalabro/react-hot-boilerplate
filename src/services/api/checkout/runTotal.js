@@ -29,6 +29,23 @@ function applyBundleDiscount(total, bundleDiscount) {
   }
 }
 
+function applyFreeForProducts(total, freeForProductsDiscount) {
+  const membershipAdl = total.ads[freeForProductsDiscount.adLevel]
+  let quantity = 0
+
+  forEach(total.ads, (obj) => {
+    quantity = quantity + obj.quantity
+  })
+
+  if(quantity >= freeForProductsDiscount.over) {
+      const disc = (membershipAdl.price * membershipAdl.quantity)
+      total.ads[freeForProductsDiscount.adLevel]['discount'] = (total.ads[freeForProductsDiscount.adLevel]['discount'] || 0) - disc
+      total.ads[freeForProductsDiscount.adLevel]['total'] = total.ads[freeForProductsDiscount.adLevel]['total'] - disc
+
+      total['discount'] = (total['discount'] || 0) - disc
+  }
+}
+
 export const runTotal = (ads, deals, adLevels) => {
   let total = {
     ads: {}
@@ -53,6 +70,9 @@ export const runTotal = (ads, deals, adLevels) => {
 
     const bundleDiscount = deals.filter((deal) => (deal.type === 'bundle-discount' && deal.adLevel === ad))[0];
     if(bundleDiscount) applyBundleDiscount(total, bundleDiscount)
+
+    const freeForProducts = deals.filter((deal) => (deal.type === 'free-for-products' && deal.adLevel === ad))[0];
+    if(freeForProducts) applyFreeForProducts(total, freeForProducts)
 
     total['total'] = total['subtotal'] + (total['discount'] || 0)
   })
